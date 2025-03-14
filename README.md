@@ -1,5 +1,5 @@
 # STATS220
-#### This is my repo for STATS 220. 
+#### 📌 This is my repo for STATS 220. 
 
 ---
 #### A little about me:
@@ -18,7 +18,7 @@
 
 --- 
 
-#### Current Top 5 Songs:
+#### 🎵 Current Top 5 Songs:
 
 1. Abbi - Vincemp3
 2. Pasilyo - SunKissed Lola
