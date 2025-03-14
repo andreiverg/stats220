@@ -28,7 +28,7 @@
 
 ---
 
-A meme that captures how I currently feel about my university studies is ![](https://tenor.com/view/adult-swim-this-is-fine-casual-flames-life-gif-5794951)
+A meme that captures how I currently feel about my university studies is ![](https://media1.tenor.com/m/epOYAgU1gKkAAAAd/girl-crying.gif)
 
 *Thanks for dropping by!*
-![](https://tenor.com/view/chiikawa-cute-anime-kawaii-smile-gif-17799367485572299151)
+![](https://media1.tenor.com/m/9wQObEwsuY8AAAAC/chiikawa-cute.gif))
