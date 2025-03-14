@@ -28,7 +28,10 @@
 
 ---
 
-A meme that captures how I currently feel about my university studies is ![](https://media1.tenor.com/m/epOYAgU1gKkAAAAd/girl-crying.gif)
+A meme that captures how I currently feel about my university studies is 
+
+![](https://media1.tenor.com/m/epOYAgU1gKkAAAAd/girl-crying.gif)
 
 *Thanks for dropping by!*
+
 ![](https://media1.tenor.com/m/9wQObEwsuY8AAAAC/chiikawa-cute.gif))
