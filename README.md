@@ -13,7 +13,7 @@
 ---
 #### Where can you reach me?
  
- - [Linkedin](https://www.linkedin.com/in/john-vergara-3b9921285/)
+ - [Linkedin](https://www.linkedin.com/in/john-andrei-vergara-3b9921285/)
  - `aniyox` on discord!
 
 
