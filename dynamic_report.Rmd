@@ -1,0 +1,225 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+library(tidyverse)
+
+spreadsheet <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-Yd1nwbWs3rFJVIluP5nIta3cFbIkUF0WE8MhHB-gp64qeqWgR2up_DnUW9cl0Hq1FGRKyEmScpp1/pub?output=csv"
+
+# Importing the data from the CSV
+logged_data <- read_csv(spreadsheet)
+
+# Renaming variables to clean uo
+latest_data <- rename(logged_data,
+                      muscle_group = 2,
+                      body_mass = 3,
+                      weight = 4,
+                      sets = 5,
+                      reps = 6)
+
+
+# ============================================================================
+# Commented Section for code to create summary values and Bar Charts
+# ============================================================================
+
+# Summary Values
+mean_reps <- mean(latest_data$reps)
+mean_sets <- mean(latest_data$sets)
+max_weight <- max(latest_data$weight)
+min_weight <- min(latest_data$weight)
+
+# ============================================================================
+
+# Calculate Intensity
+intensity <- latest_data %>%
+  
+  # Group this by body type
+  group_by(body_mass) %>%
+  
+  # Calculate average weight lifted for each body type
+  summarise(avg_weight = mean(weight), .groups = "drop") %>%
+  
+  # Create Bar Plot
+  ggplot(aes(x = body_mass, y = avg_weight, fill = body_mass)) +
+  
+  # Draw the bars
+  geom_col() +
+  
+  # Add plot labels
+  labs(
+    title = "Average Intensity by Body Type",
+    subtitle = "Measured by average weight lifted (kg)",
+    x = "Body Type",
+    y = "Average Weight (kg)",
+    caption = "This shows how intensely each build tends to train"
+  )
+
+# ============================================================================
+
+# Calculate average reps per body type
+reps_plot <- latest_data %>%
+  
+  # Group by body type
+  group_by(body_mass) %>%
+  
+  # Average reps
+  summarise(avg_reps = mean(reps), .groups = "drop") %>%
+  
+  # Plot
+  ggplot(aes(x = body_mass, y = avg_reps, fill = body_mass)) +
+  geom_col() +
+  labs(
+    title = "Average Reps per Set by Body Type",
+    subtitle = "How many reps each build performs per set",
+    x = "Body Type",
+    y = "Average Reps",
+    caption = "This reflects training focus (endurance vs strength)"
+  ) 
+
+# ============================================================================
+
+# Calculate average sets per body type
+sets_plot <- latest_data %>%
+  
+  # Group by body type
+  group_by(body_mass) %>%
+  
+  # Average sets
+  summarise(avg_sets = mean(sets), .groups = "drop") %>%
+  
+  # Plot
+  ggplot(aes(x = body_mass, y = avg_sets, fill = body_mass)) +
+  geom_col() +
+  labs(
+    title = "Average Sets per Session by Body Type",
+    subtitle = "How many sets each build performs",
+    x = "Body Type",
+    y = "Average Sets",
+    caption = "This shows how much each build focuses on volume or session length"
+  ) 
+```
+
+```{css}
+/*CSS CODE BLOCK FOR MARKDOWN FILE*/
+
+/* initialising variables to later reference in css styling */
+:root {
+    --text-color: #1a1c20;
+    --link-color: #4a76ee;
+    --background-color: #f5f5f7;
+    --header-bg: #ffffff;
+    --box-shadow: rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+}
+
+/* main body of html */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+p {
+    background-color: white;  /* Set background to white */
+    padding: 10px;
+    border-radius: 8px; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* all levels of headers */
+h1, h2, h3 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* individual adjustments to header*/
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 28px;
+    border-bottom: 2px solid var(--text-color);
+    padding-bottom: 5px;
+}
+
+/* link to my github */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* mouse hovering over the link */
+a:hover {
+    text-decoration: underline;
+}
+
+/* Images */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 10px auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 4px 8px var(--box-shadow);
+}
+
+/* coding blocks */
+pre {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    background: #eeeeee;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+```
+## How different body types train
+
+This report in seeing in how the different body types differ in...
+
+- Weight lifted
+- Reps per set
+- Sets per session
+
+We look into how each body type approaches their training, whether their prioritise lifiting heavy, doing more sets, or performing more reps.
+
+## Average Weight Lifted
+```{r}
+intensity
+```
+
+- The lightest weight lifted: `r min_weight` 
+- The heaviest weight lifted: `r max_weight`
+
+## Average Reps per Set
+
+``` {r}
+reps_plot
+```
+
+Averaging around `r signif(mean_reps,2)` reps across all groups.
+
+## Average Sets per Session
+
+``` {r}
+sets_plot
+```
+
+They seem to not have that much of a difference, everyone tends to train around `r signif(mean_sets,2)` sets.
