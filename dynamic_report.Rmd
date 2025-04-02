@@ -223,3 +223,9 @@ sets_plot
 ```
 
 They seem to not have that much of a difference, everyone tends to train around `r signif(mean_sets,2)` sets.
+
+## Information we can gather from this
+
+From this we can gather that as long as you stay around `r signif(mean_sets,2)` sets and have around `r signif(mean_reps,2)` reps. By slowly increasing the weight over time you can obtain a more bulky build. Of course there are more factors such as diet but staying consistent and following a workout routine that have these numbers should allow your body to show growth over time.
+
+<img src="https://media1.tenor.com/m/IeDadtoeM1YAAAAC/tom-and-jerry-tom-strong.gif" alt="My Image Description" width="500"/>
